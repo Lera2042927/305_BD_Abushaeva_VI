@@ -28,7 +28,7 @@ echo "--------------------------------------------------"
 sqlite3 movies_rating.db -box -echo "WITH movie_ratings AS (SELECT m.id, m.title, m.year, AVG(r.rating) AS avg_rating FROM movies m JOIN ratings r ON r.movie_id = m.id GROUP BY m.id), ranked AS (SELECT title, year, avg_rating, RANK() OVER (ORDER BY avg_rating DESC) AS place FROM movie_ratings) SELECT title AS Фильм, year AS Год, ROUND(avg_rating, 3) AS Средняя_оценка, place AS Место FROM ranked ORDER BY year, title LIMIT 20;"
 echo " "
 
-echo "6. Вывести список из 10 последних зарегистрированных пользователей в формате «Фамилия Имя | Дата регистрации» (сначала фамилия, потом имя)."
+echo '6. Вывести список из 10 последних зарегистрированных пользователей в формате "Фамилия Имя | Дата регистрации" (сначала фамилия, потом имя).'
 echo "--------------------------------------------------"
 sqlite3 movies_rating.db -box -echo "SELECT substr(name, instr(name, ' ') + 1) || ' ' || substr(name, 1, instr(name, ' ') - 1) || '|' || register_date AS Пользователь FROM users ORDER BY register_date DESC, id DESC LIMIT 10;"
 echo " "
