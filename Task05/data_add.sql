@@ -53,7 +53,7 @@ SELECT
 
 INSERT INTO ratings (user_id, movie_id, rating, timestamp)
 SELECT 
-    (SELECT id FROM users WHERE email = 'dabushaeva@pochta.ru'),
+    (SELECT id FROM users WHERE email = 'abushaeva@pochta.ru'),
     (SELECT id FROM movies WHERE title = 'Девятая планета'),
     4.5,
     strftime('%s', 'now');
