@@ -14,46 +14,46 @@ INSERT INTO users (name, email, gender, register_date, occupation)
 VALUES ('Колыганов Александр', 'koliganov@pochta.ru', 'male', date('now'), 'student');
 
 INSERT INTO movies (title, year)
-VALUES ('Колобок', 2026);
+VALUES ('Колобок 2026', 2026);
 
 INSERT INTO movie_genres (movie_id, genre_id)
 SELECT m.id, g.id 
 FROM movies m, genres g 
-WHERE m.title = 'Колобок' AND g.name = 'Action';
+WHERE m.title = 'Колобок 2026' AND g.name = 'Action';
 
 INSERT INTO movies (title, year)
-VALUES ('Сказка о потерянном времени', 2026);
+VALUES ('Сказка о потерянном времени 2026', 2026);
 
 INSERT INTO movie_genres (movie_id, genre_id)
 SELECT m.id, g.id 
 FROM movies m, genres g 
-WHERE m.title = 'Сказка о потерянном времени' AND g.name = 'Comedy';
+WHERE m.title = 'Сказка о потерянном времени 2026' AND g.name = 'Comedy';
 
 INSERT INTO movies (title, year)
-VALUES ('Девятая планета', 2026);
+VALUES ('Девятая планета 2026', 2026);
 
 INSERT INTO movie_genres (movie_id, genre_id)
 SELECT m.id, g.id 
 FROM movies m, genres g 
-WHERE m.title = 'Девятая планета' AND g.name = 'Sci-Fi';
+WHERE m.title = 'Девятая планета 2026' AND g.name = 'Sci-Fi';
 
 INSERT INTO ratings (user_id, movie_id, rating, timestamp)
 SELECT 
     (SELECT id FROM users WHERE email = 'abushaeva@pochta.ru'),
-    (SELECT id FROM movies WHERE title = 'Колобок'),
+    (SELECT id FROM movies WHERE title = 'Колобок 2026'),
     4.0,
     strftime('%s', 'now');
 
 INSERT INTO ratings (user_id, movie_id, rating, timestamp)
 SELECT 
     (SELECT id FROM users WHERE email = 'abushaeva@pochta.ru'),
-    (SELECT id FROM movies WHERE title = 'Сказка о потерянном времени'),
+    (SELECT id FROM movies WHERE title = 'Сказка о потерянном времени 2026'),
     5.0,
     strftime('%s', 'now');
 
 INSERT INTO ratings (user_id, movie_id, rating, timestamp)
 SELECT 
     (SELECT id FROM users WHERE email = 'abushaeva@pochta.ru'),
-    (SELECT id FROM movies WHERE title = 'Девятая планета'),
+    (SELECT id FROM movies WHERE title = 'Девятая планета 2026'),
     4.5,
     strftime('%s', 'now');
