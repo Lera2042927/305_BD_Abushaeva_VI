@@ -28,7 +28,7 @@ echo --------------------------------------------------
 sqlite3 movies_rating.db -box -echo "SELECT id, title, year, genres FROM movies WHERE year = (SELECT MAX(year) FROM movies) ORDER BY title;"
 echo " "
 
-echo "6. Найти все драмы, выпущенные после 2005 года, которые понрав	ились женщинам (оценка не ниже 4.5). Для каждого фильма в этом списке вывести название, год выпуска и количество таких оценок. Результат отсортировать по году выпуска и названию фильма."
+echo "6. Найти все комедии, выпущенные после 2000 года, которые понравились мужчинам (оценка не ниже 4.5). Для каждого фильма в этом списке вывести название, год выпуска и количество таких оценок. Результат отсортировать по году выпуска и названию фильма."
 echo --------------------------------------------------
 sqlite3 movies_rating.db -box -echo "SELECT m.title, m.year, COUNT(r.rating) AS high_ratings_count FROM movies m JOIN ratings r ON m.id = r.movie_id JOIN users u ON r.user_id = u.id WHERE m.genres LIKE '%%Comedy%%' AND m.year > 2000 AND u.gender = 'male' AND r.rating >= 4.5 GROUP BY m.id, m.title, m.year ORDER BY m.year, m.title;"
 echo " "
